@@ -20,33 +20,57 @@ Model evaluation using accuracy, ROC-AUC, learning curves, and precision-recall 
 **The dataset used is heart.csv containing the following columns:**
 
 Column	Description
+
 age	Age of the patient
+
 sex	Gender (0 = Female, 1 = Male)
+
 cp	Chest pain type (0–3)
+
 trestbps	Resting blood pressure (mm Hg)
+
 chol	Serum cholesterol (mg/dl)
+
 fbs	Fasting blood sugar > 120 mg/dl (1 = True, 0 = False)
+
 restecg	Resting electrocardiographic results (0–2)
+
 thalach	Maximum heart rate achieved
+
 exang	Exercise-induced angina (1 = Yes, 0 = No)
+
 oldpeak	ST depression induced by exercise relative to rest
+
 slope	Slope of the peak exercise ST segment (0–2)
+
 ca	Number of major vessels colored by fluoroscopy (0–3)
+
 thal	Thalassemia (1 = Normal, 2 = Fixed defect, 3 = Reversible defect)
+
 target	Heart disease diagnosis (0 = No, 1 = Yes)
 
 # Requirements #
 
 Install the required libraries:
+
 import numpy as np
+
 import pandas as pd
+
 import matplotlib.pyplot as plt
+
 import seaborn as sns
+
 from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV, RandomizedSearchCV
+
 from sklearn.preprocessing import StandardScaler, LabelEncoder
+
 from sklearn.feature_selection import SelectKBest, chi2, RFE
+
 from imblearn.over_sampling import SMOTE
+
 import warnings
+
 warnings.filterwarnings('ignore')
 
 # 1. Data Loading and Inspection

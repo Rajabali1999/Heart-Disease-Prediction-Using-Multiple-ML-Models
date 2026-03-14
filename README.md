@@ -1,210 +1,211 @@
+
+
 # Heart Disease Prediction Using Multiple ML Models
-Advanced machine learning project for heart disease prediction using the UCI dataset. Includes preprocessing, SMOTE, model comparison (Logistic Regression, Random Forest, SVM), hyperparameter tuning, and performance evaluation.
- 
-**The analysis includes:**
 
-Data visualization and statistical analysis
+This project applies machine learning techniques to predict the presence of heart disease using the **UCI Heart Disease Dataset**. The workflow includes data preprocessing, handling class imbalance, feature selection, model comparison, hyperparameter tuning, and advanced evaluation.
 
-Handling class imbalance using SMOTE
+The implementation is developed using **Python** with machine learning tools from **Scikit-learn** and **XGBoost**.
 
-Feature selection using Recursive Feature Elimination (RFE)
+---
 
-Training and comparing multiple machine learning models
+# Project Features
 
-Hyperparameter tuning of the best-performing model
+The analysis includes:
 
-Model evaluation using accuracy, ROC-AUC, learning curves, and precision-recall curves
+* Data visualization and statistical analysis
+* Handling class imbalance using **SMOTE**
+* Feature selection using **Recursive Feature Elimination** (RFE)
+* Training and comparing multiple machine learning models
+* Hyperparameter tuning of the best-performing model
+* Model evaluation using accuracy, ROC-AUC, learning curves, and precision-recall curves
+
+---
 
 # Dataset
 
-**The dataset used is heart.csv containing the following columns:**
+The dataset used in this project is **heart.csv**, containing medical attributes used to diagnose heart disease.
 
-Column	Description
+| Column   | Description                                    |
+| -------- | ---------------------------------------------- |
+| age      | Age of the patient                             |
+| sex      | Gender (0 = Female, 1 = Male)                  |
+| cp       | Chest pain type (0–3)                          |
+| trestbps | Resting blood pressure (mm Hg)                 |
+| chol     | Serum cholesterol (mg/dl)                      |
+| fbs      | Fasting blood sugar > 120 mg/dl                |
+| restecg  | Resting electrocardiographic results           |
+| thalach  | Maximum heart rate achieved                    |
+| exang    | Exercise-induced angina                        |
+| oldpeak  | ST depression induced by exercise              |
+| slope    | Slope of the peak exercise ST segment          |
+| ca       | Number of major vessels colored by fluoroscopy |
+| thal     | Thalassemia                                    |
+| target   | Heart disease diagnosis (0 = No, 1 = Yes)      |
 
-age	Age of the patient
+---
 
-sex	Gender (0 = Female, 1 = Male)
+# Requirements
 
-cp	Chest pain type (0–3)
+Install the required Python libraries:
 
-trestbps	Resting blood pressure (mm Hg)
+* **NumPy**
+* **Pandas**
+* **Matplotlib**
+* **Seaborn**
+* **Scikit-learn**
+* **XGBoost**
+* **imbalanced-learn**
 
-chol	Serum cholesterol (mg/dl)
+Example installation:
 
-fbs	Fasting blood sugar > 120 mg/dl (1 = True, 0 = False)
+```
+pip install numpy pandas matplotlib seaborn scikit-learn xgboost imbalanced-learn
+```
 
-restecg	Resting electrocardiographic results (0–2)
-
-thalach	Maximum heart rate achieved
-
-exang	Exercise-induced angina (1 = Yes, 0 = No)
-
-oldpeak	ST depression induced by exercise relative to rest
-
-slope	Slope of the peak exercise ST segment (0–2)
-
-ca	Number of major vessels colored by fluoroscopy (0–3)
-
-thal	Thalassemia (1 = Normal, 2 = Fixed defect, 3 = Reversible defect)
-
-target	Heart disease diagnosis (0 = No, 1 = Yes)
-
-# Requirements #
-
-Install the required libraries:
-
-import numpy as np
-
-import pandas as pd
-
-import matplotlib.pyplot as plt
-
-import seaborn as sns
-
-from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV, RandomizedSearchCV
-
-from sklearn.preprocessing import StandardScaler, LabelEncoder
-
-from sklearn.feature_selection import SelectKBest, chi2, RFE
-
-from imblearn.over_sampling import SMOTE
-
-import warnings
-
-warnings.filterwarnings('ignore')
+---
 
 # 1. Data Loading and Inspection
 
-Load dataset with pandas
+* Load the dataset using **Pandas**
+* Inspect dataset shape, missing values, and statistical summary
+* Analyze class distribution for the target variable
 
-Inspect dataset shape, missing values, and basic statistics
-
-Check class distribution for the target variable
+---
 
 # 2. Exploratory Data Analysis (EDA)
 
-Visualizations using matplotlib and seaborn:
+Visualizations using **Matplotlib** and **Seaborn**:
 
-Target distribution
+* Target distribution
+* Age distribution by target
+* Gender distribution
+* Chest pain type vs target
+* Correlation heatmap
+* Maximum heart rate vs target
+* Oldpeak distribution
+* Age vs Maximum Heart Rate scatter plot
 
-Age distribution by target
+---
 
-Gender distribution
+# 3. Data Preprocessing
 
-Chest pain type vs target
+Steps performed:
 
-Correlation heatmap
+* Split dataset into training and testing sets (**80/20 split**)
+* Feature scaling using **Standardization** (`StandardScaler`)
+* Handling class imbalance using **SMOTE**
 
-Max heart rate vs target
-
-Oldpeak distribution
-
-Age vs Max Heart Rate scatter plot
-
-# 3. Preprocessing
-
-Split dataset into training and testing sets (80/20)
-
-Feature scaling with StandardScaler
-
-Handle class imbalance using SMOTE
+---
 
 # 4. Feature Selection
 
-Recursive Feature Elimination (RFE) with Random Forest
+Feature selection performed using:
 
-Select top 8 most important features
+**Recursive Feature Elimination (RFE)** with **Random Forest**
+
+Top **8 most important features** were selected for model training.
+
+---
 
 # 5. Model Training and Comparison
 
-Models evaluated:
+Multiple machine learning algorithms were evaluated:
 
-Logistic Regression
+* **Logistic Regression**
+* **Decision Tree**
+* **Random Forest**
+* **Gradient Boosting**
+* **Support Vector Machine**
+* **K-Nearest Neighbors**
+* **XGBoost**
+* **Naive Bayes**
+* **AdaBoost**
 
-Decision Tree
+### Evaluation Metrics
 
-Random Forest
+* Accuracy
+* ROC-AUC
+* Cross-validation scores
 
-Gradient Boosting
+Model performance was visualized using **bar charts**.
 
-Support Vector Machine (SVM)
-
-K-Nearest Neighbors (KNN)
-
-XGBoost
-
-Naive Bayes
-
-AdaBoost
-
-Metrics:
-
-Accuracy
-
-ROC-AUC
-
-Cross-validation scores
-
-Visualize model comparison with bar charts
+---
 
 # 6. Hyperparameter Tuning
 
-Tuned Random Forest using GridSearchCV
+Hyperparameter tuning was applied to **Random Forest** using:
 
-Parameters tuned: n_estimators, max_depth, min_samples_split, min_samples_leaf, max_features
+**Grid Search (`GridSearchCV`)**
 
-Evaluate the tuned model on the test set
+Parameters tuned:
+
+* `n_estimators`
+* `max_depth`
+* `min_samples_split`
+* `min_samples_leaf`
+* `max_features`
+
+The tuned model was evaluated on the test dataset.
+
+---
 
 # 7. Advanced Evaluation
 
-Feature importance plot
+Additional model evaluation techniques include:
 
-Confusion matrix
+* Feature importance plot
+* Confusion matrix
+* ROC curves for all models
+* Precision–Recall curves
+* Learning curves for the best model
 
-ROC curves for all models
-
-Precision-Recall curves
-
-Learning curves for the best model
+---
 
 # Results
 
-Best Model: Tuned Random Forest
+**Best Model:** Tuned **Random Forest**
 
-Test Accuracy: ~0.88
+* Test Accuracy: ~0.88
+* Test ROC-AUC: ~0.93
 
-Test ROC-AUC: ~0.93
+### Most Important Features
 
-Top Features: thalach, oldpeak, cp
+* `thalach`
+* `oldpeak`
+* `cp`
 
-Feature importance and model comparison results are saved as CSV:
+Generated output files:
 
-feature_importance.csv
+* `feature_importance.csv`
+* `model_comparison_results.csv`
 
-model_comparison_results.csv
+---
 
-
+# Running the Project
 
 Run the analysis script:
 
+```
 python heart_disease_analysis.py
+```
 
-Explore generated visualizations and CSV results.
+Then explore the generated visualizations and result CSV files.
+
+---
 
 # Visualizations
 
 The project generates:
 
-Distribution plots, boxplots, and scatter plots for feature analysis
+* Distribution plots, boxplots, and scatter plots for feature analysis
+* Correlation heatmaps
+* Model comparison bar charts
+* ROC and Precision–Recall curves
+* Learning curves for the tuned Random Forest model
 
-Heatmaps for feature correlations
-
-Bar charts comparing model accuracy and ROC-AUC
-
-ROC and Precision-Recall curves for all models
-
-Learning curves for the tuned Random Forest
+---
 
 # Author
 
-Your Name  Rajab Ali
+**Rajab Ali**
+

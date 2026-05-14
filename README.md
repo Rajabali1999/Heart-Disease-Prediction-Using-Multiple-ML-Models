@@ -1,211 +1,130 @@
+# 🫀 Heart Disease Prediction using Machine Learning
 
+## 📌 Project Overview
+This project focuses on predicting the presence of heart disease using machine learning techniques based on 14 clinical features. The workflow includes exploratory data analysis (EDA), preprocessing, handling class imbalance, model training, evaluation, and interpretation.
 
-# Heart Disease Prediction Using Multiple ML Models
-
-This project applies machine learning techniques to predict the presence of heart disease using the **UCI Heart Disease Dataset**. The workflow includes data preprocessing, handling class imbalance, feature selection, model comparison, hyperparameter tuning, and advanced evaluation.
-
-The implementation is developed using **Python** with machine learning tools from **Scikit-learn** and **XGBoost**.
-
----
-
-# Project Features
-
-The analysis includes:
-
-* Data visualization and statistical analysis
-* Handling class imbalance using **SMOTE**
-* Feature selection using **Recursive Feature Elimination** (RFE)
-* Training and comparing multiple machine learning models
-* Hyperparameter tuning of the best-performing model
-* Model evaluation using accuracy, ROC-AUC, learning curves, and precision-recall curves
+The goal is to build an accurate and interpretable classification model that can support medical decision-making.
 
 ---
 
-# Dataset
-
-The dataset used in this project is **heart.csv**, containing medical attributes used to diagnose heart disease.
-
-| Column   | Description                                    |
-| -------- | ---------------------------------------------- |
-| age      | Age of the patient                             |
-| sex      | Gender (0 = Female, 1 = Male)                  |
-| cp       | Chest pain type (0–3)                          |
-| trestbps | Resting blood pressure (mm Hg)                 |
-| chol     | Serum cholesterol (mg/dl)                      |
-| fbs      | Fasting blood sugar > 120 mg/dl                |
-| restecg  | Resting electrocardiographic results           |
-| thalach  | Maximum heart rate achieved                    |
-| exang    | Exercise-induced angina                        |
-| oldpeak  | ST depression induced by exercise              |
-| slope    | Slope of the peak exercise ST segment          |
-| ca       | Number of major vessels colored by fluoroscopy |
-| thal     | Thalassemia                                    |
-| target   | Heart disease diagnosis (0 = No, 1 = Yes)      |
+## 🎯 Objectives
+- Perform exploratory data analysis to understand feature distributions and relationships
+- Preprocess data and handle multicollinearity and scaling issues
+- Address class imbalance using SMOTE and stratified sampling
+- Build and compare multiple machine learning models
+- Evaluate models using multiple performance metrics
+- Interpret results for medical relevance
 
 ---
 
-# Requirements
+## 📊 Dataset Description
+The dataset contains 14 clinical attributes such as:
+- Age
+- Sex
+- Chest Pain Type (cp)
+- Resting Blood Pressure
+- Cholesterol
+- Fasting Blood Sugar
+- Maximum Heart Rate (thalach)
+- Exercise Induced Angina
+- ST Depression (oldpeak)
+- And others
 
-Install the required Python libraries:
-
-* **NumPy**
-* **Pandas**
-* **Matplotlib**
-* **Seaborn**
-* **Scikit-learn**
-* **XGBoost**
-* **imbalanced-learn**
-
-Example installation:
-
-```
-pip install numpy pandas matplotlib seaborn scikit-learn xgboost imbalanced-learn
-```
-
----
-
-# 1. Data Loading and Inspection
-
-* Load the dataset using **Pandas**
-* Inspect dataset shape, missing values, and statistical summary
-* Analyze class distribution for the target variable
+**Target Variable:**
+- 0 → No Heart Disease  
+- 1 → Heart Disease Present  
 
 ---
 
-# 2. Exploratory Data Analysis (EDA)
-
-Visualizations using **Matplotlib** and **Seaborn**:
-
-* Target distribution
-* Age distribution by target
-* Gender distribution
-* Chest pain type vs target
-* Correlation heatmap
-* Maximum heart rate vs target
-* Oldpeak distribution
-* Age vs Maximum Heart Rate scatter plot
+## 🧠 Machine Learning Models Used
+- Logistic Regression
+- Support Vector Machine (SVM)
+- Random Forest Classifier (Tree-based Ensemble)
+- Dummy Classifier (Baseline)
 
 ---
 
-# 3. Data Preprocessing
-
-Steps performed:
-
-* Split dataset into training and testing sets (**80/20 split**)
-* Feature scaling using **Standardization** (`StandardScaler`)
-* Handling class imbalance using **SMOTE**
-
----
-
-# 4. Feature Selection
-
-Feature selection performed using:
-
-**Recursive Feature Elimination (RFE)** with **Random Forest**
-
-Top **8 most important features** were selected for model training.
+## ⚙️ Methodology
+1. Data Loading  
+2. Exploratory Data Analysis (EDA)  
+3. Data Cleaning and Preprocessing  
+4. Feature Scaling (Standardization)  
+5. Handling Class Imbalance (SMOTE)  
+6. Train-Test Split (Stratified)  
+7. Model Training  
+8. Hyperparameter Tuning (GridSearchCV)  
+9. Model Evaluation  
+10. Interpretation of Results  
 
 ---
 
-# 5. Model Training and Comparison
-
-Multiple machine learning algorithms were evaluated:
-
-* **Logistic Regression**
-* **Decision Tree**
-* **Random Forest**
-* **Gradient Boosting**
-* **Support Vector Machine**
-* **K-Nearest Neighbors**
-* **XGBoost**
-* **Naive Bayes**
-* **AdaBoost**
-
-### Evaluation Metrics
-
-* Accuracy
-* ROC-AUC
-* Cross-validation scores
-
-Model performance was visualized using **bar charts**.
+## 📈 Evaluation Metrics
+Models were evaluated using:
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- ROC-AUC
+- Confusion Matrix
 
 ---
 
-# 6. Hyperparameter Tuning
+## 🏆 Results Summary
 
-Hyperparameter tuning was applied to **Random Forest** using:
-
-**Grid Search (`GridSearchCV`)**
-
-Parameters tuned:
-
-* `n_estimators`
-* `max_depth`
-* `min_samples_split`
-* `min_samples_leaf`
-* `max_features`
-
-The tuned model was evaluated on the test dataset.
+| Model            | Accuracy | Precision | Recall | F1-score | ROC-AUC |
+|------------------|----------|-----------|--------|----------|---------|
+| Random Forest    | 1.000    | 1.000     | 1.000  | 1.000    | 1.000   |
+| SVM              | 0.927    | 0.925     | 0.933  | 0.929    | 0.977   |
+| Logistic Regression | 0.810 | 0.762     | 0.914  | 0.831    | 0.929   |
+| Dummy Classifier | 0.488    | 0.000     | 0.000  | 0.000    | 0.500   |
 
 ---
 
-# 7. Advanced Evaluation
-
-Additional model evaluation techniques include:
-
-* Feature importance plot
-* Confusion matrix
-* ROC curves for all models
-* Precision–Recall curves
-* Learning curves for the best model
-
----
-
-# Results
-
-**Best Model:** Tuned **Random Forest**
-
-* Test Accuracy: ~0.88
-* Test ROC-AUC: ~0.93
-
-### Most Important Features
-
-* `thalach`
-* `oldpeak`
-* `cp`
-
-Generated output files:
-
-* `feature_importance.csv`
-* `model_comparison_results.csv`
+## 📊 Visualizations Included
+- Class distribution plots
+- Correlation heatmap
+- Age distribution analysis
+- Chest pain type analysis
+- ROC and Precision-Recall curves
+- Confusion matrix
+- Feature importance (Random Forest)
+- Full EDA dashboard
 
 ---
 
-# Running the Project
-
-Run the analysis script:
-
-```
-python heart_disease_analysis.py
-```
-
-Then explore the generated visualizations and result CSV files.
+## 📌 Key Findings
+- Chest pain type, ST depression, and maximum heart rate are strong predictors of heart disease
+- Ensemble models (Random Forest) performed best overall
+- Logistic Regression provides good interpretability for medical use
+- SMOTE improved minority class prediction performance
 
 ---
 
-# Visualizations
-
-The project generates:
-
-* Distribution plots, boxplots, and scatter plots for feature analysis
-* Correlation heatmaps
-* Model comparison bar charts
-* ROC and Precision–Recall curves
-* Learning curves for the tuned Random Forest model
+## ⚠️ Limitations
+- Dataset size is relatively small
+- Data comes from a single source
+- Some models assume linear relationships
+- Synthetic oversampling may introduce noise
 
 ---
 
-# Author
+## 🚀 Future Improvements
+- Apply k-fold cross-validation
+- Use advanced ensemble methods (XGBoost, LightGBM)
+- Feature engineering for deeper clinical insights
+- Validate model on external datasets
+- Deploy model using Flask or Streamlit
 
-**Rajab Ali**
+---
 
+## 🛠️ Technologies Used
+- Python
+- Pandas, NumPy
+- Scikit-learn
+- Imbalanced-learn (SMOTE)
+- Matplotlib, Seaborn
+
+---
+
+## 👨‍💻 Author
+Rajab Ali
